@@ -16,8 +16,22 @@
 ./run.sh solutions/Ex01Adt.hs              # 看参考答案（做完再对）
 ```
 
-`run.sh` 就是 `runghc -isrc -Wall`，改完存盘直接重跑，没有构建步骤。
+Windows / pwsh 用 `run.ps1`，命令一模一样：
+
+```powershell
+./run.ps1                                   # 列出所有练习
+./run.ps1 exercises/Ex01Adt.hs              # 跑一个练习
+./run.ps1 solutions/Ex01Adt.hs              # 看参考答案（做完再对）
+```
+
+两个脚本都只是 `runghc -isrc -Wall` 的壳，改完存盘直接重跑，没有构建步骤。
 `-Wall` 一直开着——Haskell 的编译器警告质量极高，当作老师用。
+
+> **编码**：GHC 按控制台码页输出，所以中文在 cp936 和 UTF-8 下都能显示。
+> `.ps1` 里 `Write-Host` 的中文由 PowerShell 现场转码，因此**不要**为了这个仓库去
+> `chcp 65001` 或改 `[Console]::OutputEncoding`；真要改，两个一起改成 UTF-8。
+> 同理别用 `bash run.sh`（脚本里的中文是写死的 UTF-8 字节，cp936 下会变 `鐢ㄦ硶`），
+> 在 pwsh 里就调 `run.ps1`。
 
 也可以进交互环境：
 
@@ -35,7 +49,8 @@ ghci -isrc exercises/Ex01Adt.hs
 
 ```
 .
-├── run.sh                 # 练习运行器
+├── run.sh                 # 练习运行器（bash / WSL）
+├── run.ps1                # 练习运行器（pwsh / Windows）
 ├── RUST-HASKELL.md        # 对照速查表：同一个东西两边怎么写
 ├── src/Spec.hs            # 迷你测试框架（只依赖 base）
 ├── exercises/             # 练习：函数体是 undefined，注释里写清了要什么
