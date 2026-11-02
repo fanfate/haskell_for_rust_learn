@@ -1,0 +1,27 @@
+# --- GHC / Cabal 构建产物 ---
+dist-newstyle/
+dist/
+*.hi
+*.o
+*.dyn_hi
+*.dyn_o
+*.p_hi
+*.p_o
+.ghc.environment.*
+cabal.project.local
+cabal.project.local~
+.hie/
+*.hie
+*.prof
+*.aux
+*.hp
+
+# --- 手写 ghc 编译出的二进制(如 test/test) ---
+/test/test
+
+# --- 编辑器 ---
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store

@@ -1,0 +1,35 @@
+cabal-version:      3.0
+name:               learn-haskell
+version:            0.1.0.0
+synopsis:           Haskell 学习练习集（面向有 Rust 基础、正在写 agent 的开发者）
+description:        见 README.md。日常练习用 ./run.sh，本文件只是为了之后做 mini-agent 时能正常构建。
+license:            BSD-3-Clause
+build-type:         Simple
+
+common base-settings
+    default-language: GHC2021
+    ghc-options:      -Wall
+
+library
+    import:           base-settings
+    hs-source-dirs:   src
+    exposed-modules:  Spec
+    build-depends:    base >=4.18 && <5
+
+executable ex01-adt
+    import:           base-settings
+    hs-source-dirs:   exercises
+    main-is:          Ex01Adt.hs
+    build-depends:    base, learn-haskell
+
+executable ex02-maybe-either
+    import:           base-settings
+    hs-source-dirs:   exercises
+    main-is:          Ex02MaybeEither.hs
+    build-depends:    base, learn-haskell
+
+executable ex03-typeclass
+    import:           base-settings
+    hs-source-dirs:   exercises
+    main-is:          Ex03Typeclass.hs
+    build-depends:    base, learn-haskell
